@@ -1,7 +1,7 @@
 <!-- ===== SPRITES ===== -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none; visibility: hidden; max-height: 0;" aria-hidden="true">
   {% for icon in site.data.sprites.meta %}
-    {% if icon.copyright | blank %}
+    {% if icon.copyright %}
   <!-- {{ icon.copyright }} -->
     {% else %}
       {% if site.data.sprites.always contains icon.id  or  page.sprites contains icon.id %}
