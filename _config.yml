@@ -5,8 +5,8 @@
 title: "Tecsmith Design"
 description: >- # this means to ignore newlines until next back-indented value
   Tecsmith Design is the open source design foundry for tecsmith.au.
-# baseurl: ""
-url: "https://tecsmith.github.io/design/"
+baseurl: "/design"
+url: "https://tecsmith.github.io"
 timezone: Australia/Sydney
 encoding: utf-8
 

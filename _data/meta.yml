@@ -22,19 +22,19 @@ css:
   # Find latest from https://cdnjs.com/
   # Generate SRI Hash from https://www.srihash.org/
   bootstrap:
-    # Bootlace 5.3.7
-    url: "https://cdn.jsdelivr.net/gh/silvinor/bootlace@5.3.7/dist/css/bootlace.min.css"
-    hash: "sha384-eot1opfzGFlwUV+MPPLx3Bn3q/s3cWjnH2wWSurFX36RR6y5XbAuJ1d9gbQUiYKG"
+    # Bootlace 5.3.9
+    url: "https://cdn.jsdelivr.net/gh/silvinor/bootlace@5.3.9/dist/css/bootlace.min.css"
+    hash: "sha256-1taxrAixKslxeg3l6rizqeGPV/TqVJtYWpyRukODMFo="
   fontawesome:
-    # FontAwesome 7.0.0
-    url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    hash: "sha384-tGBVFh2h9Zcme3k9gJLbGqDpD+jRd419j/6N32rharcTZa1X6xgxug6pFMGonjxU"
+    # FontAwesome 7.3.1
+    url: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    hash: "sha256-4Lad8m4ZWW1Lgb9+sMVLYEfnIh7BjV1NQMEe79Pviks="
 js:
   popper:
     # Popper JS 2.11.8
     url: "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     hash: "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
   bootstrap:
-    # Bootstrap JS 5.3.7
-    url: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
-    hash: "sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+    # Bootstrap v5.3.9
+    url: https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.min.js
+    hash: "sha256-rs98T2QguTYrysS3I/ILYXg1ufLcWwex6VpjAA4s62w="
