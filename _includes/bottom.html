@@ -20,7 +20,11 @@
 
 {%- if page.js -%}
   {%- for jsFile in page.js -%}
-    <script src="{{ '/assets/js/' | append: jsFile | add_query_str: '_d', debugTag | absolute_url }}"></script>
+    {%- assign jsSrc = jsFile -%}
+    {%- unless jsFile contains '://' -%}
+      {%- assign jsSrc = '/assets/js/' | append: jsFile -%}
+    {%- endunless -%}
+    <script src="{{ jsSrc | add_query_str: '_d', debugTag | absolute_url }}"></script>
   {%- endfor -%}
 {%- endif -%}
 {%- if page.script -%}

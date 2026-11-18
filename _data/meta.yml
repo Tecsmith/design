@@ -3,7 +3,7 @@ theme:
   navbar:
     link: /
     logo: "/assets/favicon/favicon.svg"
-    brand: "design.tecsmith.co"
+    brand: "tecsmith.design"
     container: 1 # 1 = nav > div:.container; 2 = div:.container > nav; 0 = nav
     class: "navbar-dark navbar-brand-3 bg-primary bg-brand-3"
   main:
@@ -11,7 +11,7 @@ theme:
   footer:
     class: bg-footer my-3 pt-3
     copyright: 2022
-    brand: "design.tecsmith.co"
+    brand: "tecsmith.design"
   features:
     detect_os: 0       # 0 (default) = no, 1 = yes
     external_links: 0  # 0 (default) = off, 1 = make target _blank, 2 = add icon, 3 = both

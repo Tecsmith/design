@@ -1,19 +1,42 @@
+## +---------------------+
+## |   Tecsmith Design   |
+## +---------------------+
+
 title: "Tecsmith Design"
-url: "https://design.tecsmith.co"
 description: >- # this means to ignore newlines until next back-indented value
   Tecsmith Design is the open source design foundry for tecsmith.au.
 # baseurl: ""
+url: "https://tecsmith.github.io/design/"
 timezone: Australia/Sydney
 encoding: utf-8
 
+## +-------------------+
+## |   Site settings   |
+## +-------------------+
+## Please use `_data/globals.yml` for site / template variables
+
+show_drafts: false
+future: false
+unpublished: false
+debug: false
+
+liquid:
+  error_mode: strict
+
+## --- SASS ---
 sass:
   load_paths:
     - node_modules/bootstrap/scss/
+    - _sass/bootstrap5/
   sass_dir: assets/css
   # *** PROD: Nice and tight ***
-  sourcemap: never
-  style: compressed
   quiet_deps: true
+  style: compressed
+  sourcemap: never
+
+## +-------------------+
+## |   Build settings  |
+## +-------------------+
 
 exclude:
   - 'README.DEV.md'
@@ -22,12 +45,11 @@ exclude:
   - '.sass-cache/'
   - '.jekyll-cache/'
   - 'gemfiles/'
-  - '_plugins/'
 
 include:
   ## --- from theme ---
   - '404.html'
-  - 'site.webmanifest'
+  - 'assets/favicon/site.webmanifest'
   - 'sitemap.xsl'
 
 plugins:
@@ -39,6 +61,7 @@ plugins:
   - jekyll-last-modified-at
 #  - jekyll-toc
 #  - jekyll-email-protect
+  - jekyll-seo-tag
 
 ## --- jekyll-seo-tag ---
 # See: https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md

@@ -4,11 +4,7 @@
 
 @charset "utf-8";
 
-/* Borrow some of Bootstrap 5's modules */
-// Make sure your _config.yml has:
-// sass:
-//   load_paths:
-//     - node_modules/bootstrap/scss/
+// ----- Borrow some of Bootstrap 5's modules -----
 @import "functions";
 @import "mixins/border-radius";
 @import "mixins/breakpoints";

@@ -12,6 +12,8 @@
 
     {%- assign navbarContainer = meta.theme.navbar.container | default: '' | strip -%}
     {%- assign navbarClass = page.navbar.class | default: meta.theme.navbar.class | default: '' -%}
+    {%- assign hideOnHome = meta.theme.navbar.hide_on_home | default: false -%}
+    {%- assign navbarItemsClass = page.navbar.items.class | default: meta.theme.navbar.items.class | default: 'me-auto' -%}
 
     {%- case navbarContainer -%}
       {%- when '1' -%}
@@ -26,28 +28,39 @@
     {%- assign navLogo = meta.theme.navbar.logo | default: "" -%}
     {%- assign navBrand = meta.theme.navbar.brand | default: "" -%}
 
-    {%- if brandLink != "" -%}
-      <a class="navbar-brand" href="{{ brandLink | absolute_url }}">
-    {%- else -%}
-      <span class="navbar-brand">
+    {%- comment -%} Optional: no brand on the home page, for sites where the hero carries the identity {%- endcomment -%}
+    {%- if hideOnHome and page.active == 'home' -%}
+      {%- assign brandLink = "" -%}
+      {%- assign navLogo = "" -%}
+      {%- assign navBrand = "" -%}
     {%- endif -%}
-    {%- if navLogo != "" -%}
-      <img class="navbar-brand-logo" src="{{ navLogo | absolute_url }}" alt="{{ site.title }}" style="height:1.5em" />
+
+    {%- if brandLink != "" or navLogo != "" or navBrand != "" -%}
+      {%- if brandLink != "" -%}
+        <a class="navbar-brand" href="{{ brandLink | absolute_url }}">
+      {%- else -%}
+        <span class="navbar-brand">
+      {%- endif -%}
+      {%- if navLogo != "" -%}
+        <img class="navbar-brand-logo" src="{{ navLogo | absolute_url }}" alt="{{ site.title }}" style="height:1.5em" />
+      {%- endif -%}
+      {%- if navLogo != "" and navBrand != "" -%}<span class="navbar-brand-space"></span>{%- endif -%}
+      {%- if navBrand != "" -%}
+        <span class="navbar-brand-name">{{ navBrand }}</span>
+      {%- endif -%}
+      {%- if brandLink != "" -%}</a>{%- else %}</span>{%- endif -%}
     {%- endif -%}
-    {%- if navLogo != "" and navBrand != "" -%}<span class="navbar-brand-space"></span>{%- endif -%}
-    {%- if navBrand != "" -%}
-      <span class="navbar-brand-name">{{ navBrand }}</span>
-    {%- endif -%}
-    {%- if brandLink != "" -%}</a>{%- else %}</span>{%- endif -%}
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Menu Items -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mb-2 mb-lg-0 {{ navbarItemsClass }}">
 
         {%- for item in navBar.menu -%}
+          {%- comment -%} Optional: hide the Home item when already on the home page {%- endcomment -%}
+          {%- unless hideOnHome and item.active == 'home' and page.active == 'home' -%}
           {%- if item.items[0] == null -%}
             {%- comment -%}<!--
               ****************************
@@ -62,16 +75,18 @@
               {%- if page.active == item.active %} active{% endif -%}
               {{- ' item-' | append: forloop.index -}}">
               <a class="nav-link
+                {%- if page.active == item.active %} active{% endif -%}
                 {%- if item.class %} {{ item.class }}{% endif -%}"
                 href="{{ item.url | absolute_url }}"
+                {%- if page.active == item.active %} aria-current="page" {% endif -%}
                 {%- if item.hint %} title="{{ item.hint }}" {% endif -%}
                 id="nav-link-{{ forloop.index }}">
                 {%- if item.fa -%}
-                  <i class="fa fa-fw {{ item.fa }}"></i>
+                  <i class="fa fa-fw {{ item.fa }} logo"></i>
                 {%- elsif item.img -%}
-                  <img class="fa fa-fw {{ item.img_class }}" style="max-height:1rem" src="{{ item.img | absolute_url }}" />
+                  <img class="fa fa-fw {{ item.img_class }} logo" style="max-height:1rem" src="{{ item.img | absolute_url }}" />
                 {%- elsif item.svg -%}
-                  <svg class="fa fa-fw {{ item.img_class }}" style="max-height:1rem"><use xlink:href="#{{ item.svg }}" /></svg>
+                  <svg class="fa fa-fw {{ item.img_class }} logo" style="max-height:1rem"><use xlink:href="#{{ item.svg }}" /></svg>
                 {%- endif -%}
                 {{- ' ' -}}{{- item.title -}}
               </a>
@@ -92,6 +107,7 @@
               {{- ' item-' | append: forloop.index -}}
               ">
               <a class="nav-link dropdown-toggle
+                {%- if page.active == item.active %} active{% endif -%}
                 {%- if item.class %}{{ ' ' | append: item.class }}{% endif -%}
                 "
                 href="{{ item.url | absolute_url | default: '#' }}"
@@ -149,6 +165,7 @@
             </li>
 
           {%- endif -%}
+          {%- endunless -%}
         {%- endfor -%}
 
       </ul>
@@ -165,7 +182,7 @@
       {%- when '1' -%}
         </div></div>
       {%- when '2' -%}
-        </nav></>
+        </nav></div>
       {%- else -%}
         </nav>
     {%- endcase -%}
